@@ -1,0 +1,31 @@
+.delivery-map-wrapper {
+    margin-top: 16px;
+}
+
+.delivery-map-help {
+    background: rgba(47, 107, 58, 0.10);
+    color: #2F6B3A;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-weight: 850;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.delivery-map-box {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(47, 107, 58, 0.14);
+    box-shadow: 0 10px 24px rgba(59, 36, 5, 0.06);
+}
+
+.delivery-map {
+    width: 100%;
+    height: 240px;
+}
+
+@media (max-width: 768px) {
+    .delivery-map {
+        height: 220px;
+    }
+}

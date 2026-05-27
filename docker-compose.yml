@@ -1,0 +1,46 @@
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: menina_frontend
+
+    ports:
+      - "6550:80"
+
+    restart: always
+
+  backend:
+    build: ./backend
+    container_name: menina_backend
+
+    ports:
+      - "6551:5000"
+
+    env_file:
+      - ./backend/.env
+
+    restart: always
+
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+
+    container_name: meninadahorta_postgres
+
+    restart: always
+
+    environment:
+      POSTGRES_DB: meninadahorta
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: superpassword123
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

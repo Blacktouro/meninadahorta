@@ -1,0 +1,346 @@
+/* HERO */
+.hero {
+    position: relative;
+    min-height: 92vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.60)),
+        url('/images/hero-churrasco.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* OVERLAY */
+.hero-overlay {
+    width: 100%;
+    padding: 120px 20px;
+}
+
+/* CONTENT */
+.hero-content {
+    max-width: 760px;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+/* BADGE */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* TITLE */
+.hero-content h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    font-weight: 950;
+    letter-spacing: -0.05em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* PARAGRAPH */
+.hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.88);
+    max-width: 650px;
+    margin-bottom: 42px;
+}
+
+/* BUTTONS */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* BASE BUTTON */
+.hero-btn {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 900;
+    border-radius: 18px;
+    padding: 18px 30px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PRIMARY */
+.hero-btn.primary {
+    background: linear-gradient(135deg, #ff7a00, #ff9f1a);
+    color: white;
+    box-shadow: 0 20px 40px rgba(255,122,0,0.28);
+}
+
+.hero-btn.primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 28px 50px rgba(255,122,0,0.35);
+}
+
+/* SECONDARY */
+.hero-btn.secondary {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    color: white;
+}
+
+.hero-btn.secondary:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-4px);
+}
+
+/* MODAL BACKDROP */
+.packs-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.25s ease;
+}
+
+/* MODAL */
+.packs-modal {
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 36px;
+    padding: 42px;
+    position: relative;
+    max-height: 92vh;
+    overflow-y: auto;
+    animation: modalUp 0.3s ease;
+}
+
+/* CLOSE */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: #f2f2f2;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    background: #e8e8e8;
+}
+
+/* LABEL */
+.modal-label {
+    display: inline-block;
+    background: rgba(255,122,0,0.12);
+    color: #ff7a00;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+/* MODAL TITLE */
+.packs-modal h2 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 950;
+    color: #123f1c;
+    margin-bottom: 14px;
+    letter-spacing: -0.04em;
+}
+
+/* SUBTITLE */
+.modal-subtitle {
+    color: #666;
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.modal-packs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 28px;
+}
+
+/* CARD */
+.modal-pack-card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: 0.35s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.modal-pack-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.10);
+}
+
+/* IMAGE */
+.modal-pack-image {
+    height: 240px;
+    overflow: hidden;
+}
+
+.modal-pack-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.modal-pack-card:hover img {
+    transform: scale(1.08);
+}
+
+/* CONTENT */
+.modal-pack-content {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* CARD TITLE */
+.modal-pack-content h3 {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #123f1c;
+    margin-bottom: 14px;
+}
+
+/* DESCRIPTION */
+.modal-pack-content p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+/* PRICE */
+.modal-pack-content strong {
+    font-size: 2rem;
+    color: #ff7a00;
+    margin-bottom: 24px;
+}
+
+/* BUTTON */
+.modal-pack-btn {
+    margin-top: auto;
+    border: none;
+    background: linear-gradient(135deg, #1f7a36, #49b061);
+    color: white;
+    padding: 16px;
+    border-radius: 18px;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 15px 30px rgba(31,122,54,0.18);
+}
+
+.modal-pack-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(31,122,54,0.25);
+}
+
+/* SCROLL */
+.packs-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.packs-modal::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 999px;
+}
+
+/* ANIMATIONS */
+@keyframes modalUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 82vh;
+    }
+
+    .hero-overlay {
+        padding: 100px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-btn {
+        width: 100%;
+    }
+
+    .packs-modal {
+        padding: 28px 20px;
+        border-radius: 24px;
+    }
+
+}

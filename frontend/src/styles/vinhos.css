@@ -1,0 +1,291 @@
+.vinhos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 34px;
+}
+
+.vinho-card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.95),
+            rgba(248,244,237,0.98)
+        );
+
+    border-radius: 34px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(59,36,5,0.08);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.04),
+        0 25px 60px rgba(59,36,5,0.08);
+
+    transition: 0.4s ease;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 680px;
+}
+
+.vinho-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.06),
+        0 40px 80px rgba(59,36,5,0.14);
+}
+
+.vinho-image {
+    position: relative;
+
+    width: 100%;
+    height: 360px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at top,
+        rgba(255,255,255,0.6),
+        transparent 55%),
+        linear-gradient(
+            180deg,
+            #ece3d3 0%,
+            #ddd0b7 100%
+        );
+}
+
+.vinho-image::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 120px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.12),
+        transparent
+    );
+}
+
+.vinho-image img {
+    position: relative;
+    z-index: 2;
+
+    height: 88%;
+    width: auto;
+
+    object-fit: contain;
+
+    transition: 0.45s ease;
+
+    filter:
+        drop-shadow(0 25px 30px rgba(0,0,0,0.28));
+}
+
+.vinho-card:hover .vinho-image img {
+    transform: scale(1.06) translateY(-5px);
+}
+
+.vinho-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.vinho-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.vinho-top span {
+    background: rgba(31,94,44,0.10);
+
+    color: #1F5E2C;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+.vinho-top small {
+    background: #b7cf45;
+
+    color: #1a2d0d;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+.vinho-card h3 {
+    color: #18411f;
+
+    font-size: 1.8rem;
+    font-weight: 950;
+
+    margin-bottom: 14px;
+
+    line-height: 1.1;
+}
+
+.vinho-card p {
+    color: #5c4930;
+
+    line-height: 1.8;
+
+    font-size: 1rem;
+
+    margin-bottom: 28px;
+}
+
+.vinho-bottom {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+.vinho-bottom strong {
+    color: #123f1c;
+
+    font-size: 2.2rem;
+    font-weight: 950;
+}
+
+.vinho-btn {
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1F5E2C,
+            #123d1b
+        );
+
+    color: white;
+
+    padding: 15px 24px;
+
+    border-radius: 18px;
+
+    font-weight: 900;
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 12px 22px rgba(31,94,44,0.22);
+}
+
+.vinho-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 34px rgba(31,94,44,0.30);
+}
+
+.vinho-details-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    border: 1px solid rgba(59,36,5,0.08);
+
+    background: rgba(255,255,255,0.65);
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.vinho-details-btn:hover {
+    background: #efe7da;
+    transform: translateY(-2px);
+}
+
+.vinho-details {
+    margin-top: 16px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.75);
+
+    border: 1px solid rgba(59,36,5,0.06);
+
+    animation: fadeIn 0.3s ease;
+}
+
+.vinho-details p {
+    margin: 0;
+    line-height: 1.8;
+    color: #5b4730;
+}
+
+@media (max-width: 768px) {
+
+    .vinho-card {
+        min-height: auto;
+    }
+
+    .vinho-image {
+        height: 300px;
+    }
+
+    .vinho-content {
+        padding: 22px;
+    }
+
+    .vinho-bottom {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vinho-btn {
+        width: 100%;
+    }
+
+    .vinho-bottom strong {
+        text-align: center;
+    }
+}

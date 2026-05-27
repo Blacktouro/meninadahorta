@@ -1,0 +1,97 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+}
+
+.admin-sidebar {
+    width: 270px;
+    background: #123f1c;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 14px;
+    transition: 0.3s ease;
+    font-weight: 600;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+.admin-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.4rem;
+    color: #123f1c;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    color: #666;
+}
+
+.dashboard-cards {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.dashboard-card h3 {
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.dashboard-card span {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #123f1c;
+}
+
+
+.logout-btn {
+    margin-top: 20px;
+    border: none;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: left;
+}
+
+.logout-btn:hover {
+    background: rgba(255,255,255,0.22);
+}

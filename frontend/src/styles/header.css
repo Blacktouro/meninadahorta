@@ -1,0 +1,353 @@
+/* =========================
+   PREMIUM HEADER
+========================= */
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    padding: 18px 0;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    transition: 0.35s ease;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.04),
+        0 1px 0 rgba(255,255,255,0.4) inset;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logo-area:hover {
+    transform: translateY(-2px);
+}
+
+.logo-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 22px;
+    background:
+        linear-gradient(135deg, #14532d, #22c55e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 14px 30px rgba(34,197,94,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.logo-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(255,255,255,0.25),
+            transparent 80%
+        );
+    transform: translateX(-120%);
+    transition: 0.8s;
+}
+
+.logo-area:hover .logo-icon::before {
+    transform: translateX(120%);
+}
+
+.logo-text h2 {
+    margin: 0;
+    color: #123f1c;
+    font-size: 1.35rem;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.logo-text span {
+    display: block;
+    margin-top: 3px;
+    color: #5f5f5f;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.75);
+    padding: 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.04);
+}
+
+/* LINKS */
+
+.desktop-nav a,
+.nav-highlight-btn {
+    position: relative;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    color: #1f1f1f;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 12px 18px;
+    border-radius: 999px;
+    transition: 0.28s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    bottom: 8px;
+    width: 0%;
+    height: 2px;
+    background: #22c55e;
+    transition: 0.3s;
+    border-radius: 999px;
+}
+
+.desktop-nav a:hover {
+    color: #15803d;
+    background: rgba(34,197,94,0.08);
+}
+
+.desktop-nav a:hover::after {
+    width: calc(100% - 36px);
+}
+
+/* =========================
+   MAIS PEDIDOS
+========================= */
+
+.nav-highlight-btn {
+    background:
+        linear-gradient(135deg, #ff7a00, #ffb000);
+    color: white !important;
+    font-weight: 900;
+    box-shadow:
+        0 12px 24px rgba(255,122,0,0.24);
+}
+
+.nav-highlight-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 18px 35px rgba(255,122,0,0.35);
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* =========================
+   CART BUTTON
+========================= */
+
+.cart-button {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #111;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08);
+}
+
+.cart-button:hover {
+    transform: translateY(-3px);
+    background: #f9f9f9;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    background: linear-gradient(135deg, #ff3b3b, #ff5f5f);
+    color: white;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 8px 18px rgba(255,59,59,0.35);
+}
+
+/* =========================
+   ENCOMENDAR BUTTON
+========================= */
+
+.order-btn {
+    border: none;
+    background:
+        linear-gradient(135deg, #15803d, #22c55e);
+    color: white;
+    padding: 15px 24px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow:
+        0 16px 35px rgba(34,197,94,0.25);
+}
+
+.order-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 22px 45px rgba(34,197,94,0.35);
+}
+
+/* =========================
+   WHATSAPP BUTTON
+========================= */
+
+.whatsapp-btn {
+    text-decoration: none;
+    background:
+        linear-gradient(135deg, #1ebe5d, #25D366);
+    color: white;
+    padding: 15px 22px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.92rem;
+    transition: 0.3s;
+    box-shadow:
+        0 16px 35px rgba(37,211,102,0.24);
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 24px 45px rgba(37,211,102,0.32);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .desktop-nav {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .main-header {
+        padding: 14px 0;
+    }
+
+    .header-content {
+        gap: 14px;
+    }
+
+    .logo-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 18px;
+        font-size: 1.4rem;
+    }
+
+    .logo-text h2 {
+        font-size: 1.05rem;
+    }
+
+    .logo-text span {
+        font-size: 0.72rem;
+    }
+
+    .whatsapp-btn {
+        display: none;
+    }
+
+    .order-btn {
+        padding: 12px 16px;
+        font-size: 0.82rem;
+    }
+
+    .cart-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
+    }
+
+}
+
+
+
+.admin-btn {
+    background: linear-gradient(135deg, #123f1c, #1d6b31);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 25px rgba(18, 63, 28, 0.18);
+}
+
+.admin-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #145326, #23853d);
+}
