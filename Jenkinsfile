@@ -11,15 +11,22 @@ environment {
 stages {
 
     stage('Backup Database') {
-        steps {
-            sh '''
-            mkdir -p $BACKUP_DIR
+steps {
+sh '''
+mkdir -p $BACKUP_DIR
 
-            docker exec meninadahorta_postgres pg_dump -U admin meninadahorta > \
-            $BACKUP_DIR/backup-$(date +%F-%H-%M-%S).sql
-            '''
-        }
-    }
+    BACKUP_FILE=$BACKUP_DIR/backup-$(date +%F-%H-%M-%S).sql.gz
+
+    docker exec meninadahorta_postgres \
+    pg_dump -U admin meninadahorta | gzip > $BACKUP_FILE
+
+    echo "Backup criado em: $BACKUP_FILE"
+
+    ls -lh $BACKUP_DIR
+    '''
+}
+
+}
 
     stage('Backup Current Release') {
         steps {
