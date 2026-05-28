@@ -1,0 +1,30 @@
+.admin-sidebar {
+    width: 260px;
+    background: #111827;
+    color: white;
+    padding: 30px;
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.admin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.admin-sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.admin-sidebar a:hover {
+    background: rgba(255,255,255,0.1);
+}
