@@ -1,0 +1,38 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f6fa;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.admin-top h1 {
+    font-size: 2.2rem;
+    color: #1d1d1d;
+}
+
+.logout-btn {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 24px;
+}
