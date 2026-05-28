@@ -86,7 +86,7 @@ function Vinhos() {
                 </h2>
 
                 <p className="vinhos-subtitle">
-                    Escolhe os teus vinhos preferidos e adiciona ao carrinho.
+                    Escolhe melhores vinhos preferidos e adiciona ao carrinho.
                 </p>
 
                 <div className="vinhos-grid">
