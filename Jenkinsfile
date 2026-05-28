@@ -7,11 +7,15 @@ environment {
 
 stages {
 
-    stage('Copy Project') {
+    stage('Sync Project') {
         steps {
             sh '''
-            rm -rf $PROJECT_DIR/*
-            cp -r * $PROJECT_DIR/
+            rsync -av --delete \
+            --exclude '.git' \
+            --exclude '.env' \
+            --exclude 'node_modules' \
+            --exclude '__pycache__' \
+            ./ $PROJECT_DIR/
             '''
         }
     }
@@ -37,13 +41,15 @@ stages {
 }
 
 post {
+
     success {
-        echo 'Deploy concluído!'
+        echo 'Deploy concluído com sucesso!'
     }
 
     failure {
         echo 'Erro no deploy!'
     }
+
 }
 
 
