@@ -1,107 +1,98 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import AdminSidebar from "../components/admin/AdminSidebar";
+import ProductForm from "../components/admin/ProductForm";
+import ProductCard from "../components/admin/ProductCard";
+
+import "../styles/admin/admin.css";
 
 function AdminProducts() {
 
-    const [form, setForm] = useState({
-        nome: "",
-        descricao: "",
-        preco: "",
-        categoria_id: "",
-        imagem: "",
-        stock: "",
-        destaque: false
-    });
+    const [products, setProducts] = useState([]);
 
-    const handleChange = (e) => {
+    const carregarProdutos = async () => {
 
-        const { name, value, type, checked } = e.target;
+        try {
 
-        setForm({
-            ...form,
-            [name]: type === "checkbox" ? checked : value
-        });
+            const response = await fetch("/api/products");
+            const data = await response.json();
+
+            setProducts(data);
+
+        } catch (err) {
+
+            console.error(err);
+        }
     };
 
-    const criarProduto = async (e) => {
+    useEffect(() => {
 
-        e.preventDefault();
+        carregarProdutos();
 
-        const response = await fetch("/api/products", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(form)
-        });
+    }, []);
 
-        const data = await response.json();
+    const apagarProduto = async (id) => {
 
-        alert(data.message);
+        if (!window.confirm("Apagar produto?")) return;
+
+        try {
+
+            await fetch(`/api/products/${id}`, {
+                method: "DELETE"
+            });
+
+            carregarProdutos();
+
+        } catch (err) {
+
+            console.error(err);
+        }
     };
 
     return (
-        <div>
 
-            <h1>Painel Admin</h1>
+        <div className="admin-layout">
 
-            <form onSubmit={criarProduto}>
+            <AdminSidebar />
 
-                <input
-                    type="text"
-                    name="nome"
-                    placeholder="Nome"
-                    onChange={handleChange}
-                />
+            <div className="admin-content">
 
-                <textarea
-                    name="descricao"
-                    placeholder="Descrição"
-                    onChange={handleChange}
-                />
+                <div className="admin-top">
 
-                <input
-                    type="number"
-                    step="0.01"
-                    name="preco"
-                    placeholder="Preço"
-                    onChange={handleChange}
-                />
+                    <div>
+                        <h1>Painel Admin</h1>
+                        <p>Gerir produtos da loja</p>
+                    </div>
 
-                <input
-                    type="number"
-                    name="categoria_id"
-                    placeholder="Categoria ID"
-                    onChange={handleChange}
-                />
+                    <button className="logout-btn">
+                        Logout
+                    </button>
 
-                <input
-                    type="text"
-                    name="imagem"
-                    placeholder="Imagem"
-                    onChange={handleChange}
-                />
+                </div>
 
-                <input
-                    type="number"
-                    name="stock"
-                    placeholder="Stock"
-                    onChange={handleChange}
-                />
+                <ProductForm onSuccess={carregarProdutos} />
 
-                <label>
-                    Destaque
-                    <input
-                        type="checkbox"
-                        name="destaque"
-                        onChange={handleChange}
-                    />
-                </label>
+                <div className="admin-section">
 
-                <button type="submit">
-                    Criar Produto
-                </button>
+                    <h2>Produtos</h2>
 
-            </form>
+                    <div className="products-grid">
+
+                        {products.map((product) => (
+
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                onDelete={apagarProduto}
+                            />
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
     );
