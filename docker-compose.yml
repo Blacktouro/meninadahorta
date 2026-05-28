@@ -9,21 +9,19 @@ services:
 
     restart: always
 
+
   backend:
     build: ./backend
-    container_name: menina_backend
+
+    container_name: meninadahorta_backend
 
     ports:
       - "6551:5000"
 
-    env_file:
-      - ./backend/.env
+    volumes:
+      - /home/andre/uploads:/app/uploads
 
     restart: always
-
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres:16
 

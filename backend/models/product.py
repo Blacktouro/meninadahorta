@@ -1,48 +1,26 @@
-from datetime import datetime
-from database.db import db
+from flask import Blueprint, jsonify, request
+from services.product_service import (
+    get_all_products,
+    create_new_product
+)
 
-class Product(db.Model):
+products_bp = Blueprint('products', __name__)
 
-    __tablename__ = 'products'
+@products_bp.route('/api/products', methods=['GET'])
+def get_products():
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
+    produtos = get_all_products()
 
-    nome = db.Column(
-        db.String(255),
-        nullable=False
-    )
+    return jsonify(produtos)
 
-    descricao = db.Column(
-        db.Text
-    )
 
-    preco = db.Column(
-        db.Float,
-        nullable=False
-    )
+@products_bp.route('/api/products', methods=['POST'])
+def create_product():
 
-    categoria = db.Column(
-        db.String(120)
-    )
+    data = request.get_json()
 
-    imagem = db.Column(
-        db.String(500)
-    )
+    create_new_product(data)
 
-    stock = db.Column(
-        db.Integer,
-        default=0
-    )
-
-    ativo = db.Column(
-        db.Boolean,
-        default=True
-    )
-
-    created_at = db.Column(
-        db.DateTime,
-        default=datetime.utcnow
-    )
+    return jsonify({
+        "message": "Produto criado com sucesso"
+    })

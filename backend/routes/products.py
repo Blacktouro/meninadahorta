@@ -1,8 +1,18 @@
-from flask import Blueprint, jsonify, request
+
+from flask import (
+    Blueprint,
+    jsonify,
+    request,
+    current_app,
+    send_from_directory
+)
+
 import psycopg2
+import os
+
+from werkzeug.utils import secure_filename
 
 products_bp = Blueprint('products', __name__)
-
 
 # LISTAR PRODUTOS
 @products_bp.route('/api/products', methods=['GET'])
@@ -58,12 +68,46 @@ def get_products():
 
     return jsonify(produtos)
 
+# SERVIR IMAGENS
+@products_bp.route('/uploads/products/<filename>')
+def uploaded_file(filename):
+
+    return send_from_directory(
+        current_app.config['UPLOAD_FOLDER'],
+        filename
+    )
 
 # CRIAR PRODUTO
 @products_bp.route('/api/products', methods=['POST'])
 def create_product():
 
-    data = request.get_json()
+    imagem = request.files.get("imagem")
+
+    filename = None
+    imagem_url = None
+
+    # UPLOAD IMAGEM
+    if imagem:
+
+        filename = secure_filename(imagem.filename)
+
+        filepath = os.path.join(
+            current_app.config['UPLOAD_FOLDER'],
+            filename
+        )
+
+        imagem.save(filepath)
+
+        imagem_url = f"/uploads/products/{filename}"
+
+    nome = request.form.get("nome")
+    descricao = request.form.get("descricao")
+    preco = request.form.get("preco")
+    categoria_id = request.form.get("categoria_id")
+    stock = request.form.get("stock")
+    destaque = request.form.get("destaque")
+
+    slug = nome.lower().replace(" ", "-")
 
     conn = psycopg2.connect(
         host="postgres",
@@ -73,8 +117,6 @@ def create_product():
     )
 
     cur = conn.cursor()
-
-    slug = data['nome'].lower().replace(" ", "-")
 
     cur.execute("""
         INSERT INTO products
@@ -91,14 +133,14 @@ def create_product():
 
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
     """, (
-        data['nome'],
+        nome,
         slug,
-        data['descricao'],
-        data['preco'],
-        data['categoria_id'],
-        data['imagem'],
-        data['stock'],
-        data['destaque']
+        descricao,
+        preco,
+        categoria_id,
+        imagem_url,
+        stock,
+        destaque
     ))
 
     conn.commit()
@@ -109,3 +151,4 @@ def create_product():
     return jsonify({
         "message": "Produto criado com sucesso"
     })
+
