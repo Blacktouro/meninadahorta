@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     PROJECT_DIR = "/home/andre/websites-feitos/meninadahorta"
 }
@@ -46,6 +45,6 @@ post {
         echo 'Erro no deploy!'
     }
 }
-```
+
 
 }
