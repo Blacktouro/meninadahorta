@@ -17,7 +17,7 @@ services:
       - "6551:5000"
 
     env_file:
-      - ./backend/.env
+      - /home/andre/envs/meninadahorta.env
 
     restart: always
 
