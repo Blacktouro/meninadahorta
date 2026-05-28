@@ -1,17 +1,18 @@
 pipeline {
 agent any
 
+```
 environment {
     PROJECT_DIR = "/home/andre/websites-feitos/meninadahorta"
 }
 
 stages {
 
-    stage('Pull') {
+    stage('Copy Project') {
         steps {
             sh '''
-            cd $PROJECT_DIR
-            git pull origin main
+            rm -rf $PROJECT_DIR/*
+            cp -r * $PROJECT_DIR/
             '''
         }
     }
@@ -45,5 +46,6 @@ post {
         echo 'Erro no deploy!'
     }
 }
+```
 
 }
